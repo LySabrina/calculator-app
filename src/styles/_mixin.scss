@@ -1,0 +1,10 @@
+@mixin themify($themes) {
+  @each $name, $value in $themes {
+    .#{$name}-theme {
+      $theme-map: $value !global;
+      @content;
+    }
+  }
+}
+
+
