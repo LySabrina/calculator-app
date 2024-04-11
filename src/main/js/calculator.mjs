@@ -13,7 +13,7 @@ const calculator = (function () {
   const multiply = (num1, num2) => num1 * num2;
   const divide = (num1, num2) => {
     if (num2 == 0) {
-      return;
+      throw new Error("Cannot divide by 0");
     }
     return num1 / num2;
   };
@@ -52,9 +52,15 @@ const calculator = (function () {
         break;
 
       case "divide":
-        total = divide(firstNum, secondNum);
-        firstNum = total;
-        secondNum = undefined;
+        try {
+          total = divide(firstNum, secondNum);
+          firstNum = total;
+          secondNum = undefined;
+        } catch (error) {
+          console.log("error caught");
+          firstNum = 0;
+          total = "Cannot divide by zero";
+        }
         break;
 
       default:

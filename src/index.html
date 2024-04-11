@@ -9,7 +9,7 @@
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="../assets/images/favicon-32x32.png"
+      href="../public/images/favicon-32x32.png"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,14 +23,20 @@
     <header>
       <h1>calc</h1>
       <div id="theme-selector">
-        <label for="dark">Dark Theme</label>
-        <input type="radio" id="dark" name="theme" value="dark" />
-
-        <label for="light">Light Theme</label>
-        <input type="radio" id="light" name="theme" value="light" checked />
-
-        <label for="purple">Purple Theme</label>
-        <input type="radio" id="purple" name="theme" value="purple" />
+        <h3>Theme</h3>
+        <div class="theme-switcher">
+          <div class="theme-switcher__labels">
+            <label for="dark">1</label>
+            <label for="light">2</label>
+            <label for="purple">3</label>
+          </div>
+          <div class="theme-switcher__btns">
+            <input type="radio" id="dark" name="theme" value="dark" />
+            <input type="radio" id="light" name="theme" value="light" checked />
+            <input type="radio" id="purple" name="theme" value="purple" />
+            <span id="active-btn"></span>
+          </div>
+        </div>
       </div>
     </header>
     <main>

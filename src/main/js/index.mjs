@@ -7,17 +7,27 @@ const equal = document.getElementById("equal");
 
 const btns = document.querySelectorAll(".calculaltor__inputs--btns");
 
+const sound = new URL("../../assets/audio/button-click.wav", import.meta.url);
+const soundEffect = new Audio(sound);
+
 let inputNum = ""; //Number inputed when user clicks on num buttons
 
-const themeSelector = document.getElementById("theme-selector");
+const themeSelector = document.querySelector(".theme-switcher__btns");
 
 themeSelector.onclick = (e) => {
-  const themeVal = e.target.value;
-  const classTemplate = `${themeVal}-theme`;
-  const body = document.body;
-  body.className = classTemplate;
+  if (e.target.tagName === "INPUT") {
+    const themeVal = e.target.value;
+    const classTemplate = `${themeVal}-theme`;
+    const body = document.body;
+    body.className = classTemplate;
+  }
 };
 
+calInputs.addEventListener("click", (e) => {
+  if (e.target.tagName == "BUTTON") {
+    soundEffect.play();
+  }
+});
 /**
  * Handling the number btns and operator onclick event
  * Will update firstNum and secondNum inside calculator
@@ -42,10 +52,16 @@ calInputs.addEventListener("click", (e) => {
  * @param {HTMLButtonElement} btn
  */
 function handleNumInputs(btn) {
-  inputNum += btn.value;
+  const value = btn.value;
+  if (value === ".") {
+    if (inputNum.indexOf(".") === -1) {
+      inputNum += btn.value;
+    }
+  } else {
+    inputNum += btn.value;
+  }
   display.textContent = inputNum;
   const num = Number(display.textContent);
-
   if (
     calculator.getOperator() === undefined ||
     calculator.getOperator() === "equal"
@@ -86,8 +102,12 @@ function handleOperators(btn) {
         //inputNum is being added to and stil lholds the other value
       }
       break;
+
     case "delete":
       inputNum = inputNum.substring(0, inputNum.length - 1);
+      if (inputNum === "") {
+        inputNum = "0";
+      }
       display.textContent = inputNum;
       const num = Number(display.textContent);
 
@@ -101,6 +121,7 @@ function handleOperators(btn) {
         calculator.setSecondNum(num);
       }
       break;
+
     case "reset":
       inputNum = "";
       display.textContent = "0";
@@ -111,15 +132,21 @@ function handleOperators(btn) {
 
     default:
       inputNum = "";
-      const operator = value;
-      calculator.operate(operator);
       if (calculator.getOperator() != undefined) {
+        calculator.operate(calculator.getOperator());
         const currentTotal = calculator.getFirstNum(); //why firstNum instead of total? Because inside calculator, the firstNum will equal to the newly operation total. Total variable may still ho
         display.textContent = currentTotal;
       }
+      const operator = value;
+      calculator.setOperator(operator);
+      // const operator = value;
+      // calculator.operate(operator);
+
+      // if (calculator.getOperator() != undefined) {
+      //   const currentTotal = calculator.getFirstNum(); //why firstNum instead of total? Because inside calculator, the firstNum will equal to the newly operation total. Total variable may still ho
+      //   display.textContent = currentTotal;
+      // }
 
       break;
   }
 }
-
-function handleDecimal() {}

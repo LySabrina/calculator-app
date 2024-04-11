@@ -15,7 +15,7 @@
 .DS_Store
 .prettierignore
 
-assets/design
+public/design
 .parcel-cache
 node_modules
 style-guide.md
