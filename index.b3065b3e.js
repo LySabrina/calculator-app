@@ -687,7 +687,7 @@ calInputs.addEventListener("click", (e)=>{
     }
 }
 
-},{"./calculator.mjs":"fvXPR","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","418e697a8061bba":"dUzxE"}],"fvXPR":[function(require,module,exports) {
+},{"./calculator.mjs":"fvXPR","418e697a8061bba":"dUzxE","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fvXPR":[function(require,module,exports) {
 /**
  * Module Pattern Object - Basically Singleton
  * There is always one instance of calculator within the app.
