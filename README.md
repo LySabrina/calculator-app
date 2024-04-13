@@ -119,9 +119,15 @@ $themes: (
 
 These key-value properties can be used to generate theme classes for the HTML elements. (See \_mixin.scss, \_function_scss to see implementation).
 
-I also learned that in Parcel, I can not simply import a .wav file and I need to use URL object to import.
+~~I also learned that in Parcel, I can not simply import a .wav file and I need to use URL object to import. In my brief research, I learned that it's due to related to transformers used in parcel. You can update the configuration file to accept .wav file but you can also just make the wav file as a URL object then use it that way.~~
 
-In my brief research, I learned that it's due to related to transformers used in parcel. You can update the configuration file to accept .wav file but you can also just make the wav file as a URL object then use it that way.
+Update: It seems that it worked at first but the .wav file was not being included in the dist folder. Insted I used "require" to import the .wav file and use it.
+
+Additionally, I had initial troubles with working with dist and github pages. I needed to install gh-pages and fix my package.json. 
+All I needed to do was use `--public-url ./` to say that the files should be imported from this folder and not the root folder. 
+
+In GitHub, the github pages would try to import the css files and js files from: `https://lysabrina.github.io/`. Thus to fix it is to tell it to fetch files from the current directory it is in.
+
 
 ### Continued development
 
@@ -135,6 +141,7 @@ Hence, possible future progress is to clean up the code inside index.mjs and kee
 ### Useful resources
 
 - [Themeing in Sass](https://david-x.medium.com/light-mode-dark-mode-dynamic-theming-through-scss-mixin-c86e57a4de49) - This helped me with creating multiple themes in Sass!
+- [Fix for Parcel relative path in dist folder](https://stackoverflow.com/questions/57484075/parcel-paths-to-css-and-js-not-linking-correctly) - Helps with figuring out why the dist folder did not have the correct paths for connecting
 
 ## Author
 

@@ -1,13 +1,14 @@
-import calculator from "./calculator.mjs";
+import calculator from "./calculator.js";
 
 const display = document.querySelector(".calculator__display");
 display.textContent = calculator.getFirstNum();
 const calInputs = document.querySelector(".calculator__inputs");
 const equal = document.getElementById("equal");
+const themeSwitches = document.querySelectorAll(
+  ".theme-switcher__btns > input"
+);
+const sound = require("../../assets/audio/button-click.wav");
 
-const btns = document.querySelectorAll(".calculaltor__inputs--btns");
-
-const sound = new URL("../../assets/audio/button-click.wav", import.meta.url);
 const soundEffect = new Audio(sound);
 
 let inputNum = ""; //Number inputed when user clicks on num buttons
@@ -28,6 +29,7 @@ calInputs.addEventListener("click", (e) => {
     soundEffect.play();
   }
 });
+
 /**
  * Handling the number btns and operator onclick event
  * Will update firstNum and secondNum inside calculator
@@ -149,4 +151,18 @@ function handleOperators(btn) {
 
       break;
   }
+}
+
+for (let switchBtn of themeSwitches) {
+  switchBtn.onclick = (e) => {
+    const activeTheme = document.querySelector(
+      ".theme-switcher__btns > input:checked"
+    );
+    console.log('prev checked' ,activeTheme)
+    activeTheme.checked = false;
+
+    const target = e.target;
+    console.log(target)
+    target.checked = true;
+  };
 }

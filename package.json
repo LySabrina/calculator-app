@@ -2,10 +2,12 @@
   "name": "calculator-app-main",
   "version": "1.0.0",
   "description": "Calculator",
-  "main": "index.mjs",
+    
   "scripts": {
     "test": "mocha src/test/calculatorTest.mjs",
-    "parcel": "parcel ./src/index.html"
+    "parcel": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html --no-minify --public-url ./",
+    "deploy": "gh-pages -d dist"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +17,7 @@
     "parcel": "^2.12.0"
   },
   "dependencies": {
+    "gh-pages": "^6.1.1",
     "sass": "^1.72.0"
   }
 }
