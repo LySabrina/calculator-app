@@ -265,10 +265,14 @@ module.exports = "button-click.1b2c26dd.wav";
 
 var _calculator = _interopRequireDefault(require("./calculator.js"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 var display = document.querySelector(".calculator__display");
 display.textContent = _calculator.default.getFirstNum();
 var calInputs = document.querySelector(".calculator__inputs");
 var equal = document.getElementById("equal");
+var themeSwitches = document.querySelectorAll(".theme-switcher__btns > input");
 var sound = require("../../assets/audio/button-click.wav");
 var soundEffect = new Audio(sound);
 var inputNum = ""; //Number inputed when user clicks on num buttons
@@ -396,5 +400,24 @@ function handleOperators(btn) {
       break;
   }
 }
+var _iterator = _createForOfIteratorHelper(themeSwitches),
+  _step;
+try {
+  for (_iterator.s(); !(_step = _iterator.n()).done;) {
+    var switchBtn = _step.value;
+    switchBtn.onclick = function (e) {
+      var activeTheme = document.querySelector(".theme-switcher__btns > input:checked");
+      console.log('prev checked', activeTheme);
+      activeTheme.checked = false;
+      var target = e.target;
+      console.log(target);
+      target.checked = true;
+    };
+  }
+} catch (err) {
+  _iterator.e(err);
+} finally {
+  _iterator.f();
+}
 },{"./calculator.js":"i6fW","../../assets/audio/button-click.wav":"TDlx"}]},{},["fRP6"], null)
-//# sourceMappingURL=js.2ee5dcfb.js.map
+//# sourceMappingURL=js.af1bb349.js.map
