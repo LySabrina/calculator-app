@@ -43,7 +43,6 @@ header #theme-selector .theme-switcher__btns {
   display: flex;
   justify-content: space-between;
   position: relative;
-  background-color: white;
   width: 100%;
   height: 2em;
   border-radius: 1em;
@@ -130,6 +129,9 @@ main {
 .dark-theme header {
   color: hsl(0, 0%, 100%);
 }
+.dark-theme header .theme-switcher__btns {
+  background-color: hsl(223, 31%, 20%);
+}
 .dark-theme header .theme-switcher__btns input:checked ~ #active-btn {
   background-color: hsl(6, 63%, 50%);
 }
@@ -174,6 +176,9 @@ main {
 .light-theme header {
   color: hsl(60, 10%, 19%);
 }
+.light-theme header .theme-switcher__btns {
+  background-color: hsl(0, 5%, 81%);
+}
 .light-theme header .theme-switcher__btns input:checked ~ #active-btn {
   background-color: hsl(25, 98%, 40%);
 }
@@ -217,6 +222,9 @@ main {
 }
 .purple-theme header {
   color: hsl(52, 100%, 62%);
+}
+.purple-theme header .theme-switcher__btns {
+  background-color: hsl(268, 71%, 12%);
 }
 .purple-theme header .theme-switcher__btns input:checked ~ #active-btn {
   background-color: hsl(176, 100%, 44%);
@@ -274,4 +282,4 @@ main {
   }
 }
 
-/*# sourceMappingURL=style.d62fca11.css.map */
+/*# sourceMappingURL=style.9fe00b1f.css.map */
